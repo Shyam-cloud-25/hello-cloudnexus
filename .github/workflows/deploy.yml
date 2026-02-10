@@ -29,7 +29,7 @@ jobs:
 
       - name: Tag Docker image
         run: |
-          docker tag hello-cloudnexus:latest ${{AWS_ECR_URL}}
+          docker tag hello-cloudnexus:latest ${{ secrets.AWS_ECR_URL }}
 
       - name: Push Docker image to ECR
         run: |
