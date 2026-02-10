@@ -33,7 +33,7 @@ jobs:
 
       - name: Push Docker image to ECR
         run: |
-          docker push 814133038071.dkr.ecr.ap-south-1.amazonaws.com/hello-cloudnexus:latest
+          docker push ${{ secrets.AWS_ECR_URL }}
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1
@@ -44,7 +44,7 @@ jobs:
           script: |
             docker stop cloudnexus-app || true
             docker rm cloudnexus-app || true
-            docker pull 814133038071.dkr.ecr.ap-south-1.amazonaws.com/hello-cloudnexus:latest
+            docker pull ${{ secrets.AWS_ECR_URL }}
             docker run -d -p 5000:5000 --name cloudnexus-app \
-            814133038071.dkr.ecr.ap-south-1.amazonaws.com/hello-cloudnexus:latest
+            ${{ secrets.AWS_ECR_URL }}
 
