@@ -327,12 +327,7 @@ This project demonstrates a **complete DevOps lifecycle**:
 It is production-aligned, interview-ready, and showcases hands-on DevOps skills.
 
 ---
-
-## 👤 Author
-
+##
 Deployed & documented as part of DevOps internship preparation.
 
 ---
-
-✅ **Next Step:** Convert this documentation into **PDF / Word format** for company submission.
-
