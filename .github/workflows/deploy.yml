@@ -63,6 +63,9 @@ jobs:
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            aws ecr get-login-password --region ap-south-1 | \
+            docker login --username AWS --password-stdin ${{ secrets.AWS_ECR_URL }}
+
             docker stop frontend || true
             docker rm frontend || true
             docker stop backend || true
