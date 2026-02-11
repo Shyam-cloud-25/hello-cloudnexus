@@ -66,10 +66,9 @@ jobs:
             aws ecr get-login-password --region ap-south-1 | \
             docker login --username AWS --password-stdin ${{ secrets.AWS_ECR_URL }}
 
-            docker stop frontend || true
-            docker rm frontend || true
-            docker stop backend || true
-            docker rm backend || true
+            docker stop $(docker ps -q) || true
+            docker rm $(docker ps -aq) || true
+
 
             docker pull ${{ secrets.AWS_ECR_URL }}:frontend
             docker pull ${{ secrets.AWS_ECR_URL }}:backend
