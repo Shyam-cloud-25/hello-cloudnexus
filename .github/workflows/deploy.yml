@@ -45,6 +45,21 @@ jobs:
         run: |
           docker build -t hello-cloudnexus-frontend ./frontend
 
+
+      #------------Trivy-------------------------
+      
+      - name: Scan Frontend Image with Trivy
+        uses: aquasecurity/trivy-action@0.20.0
+        with:
+          image-ref: hello-cloudnexus-frontend:latest
+          format: table
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
+      #-----------------------------------------------
+    
       - name: Tag Frontend Image
         run: |
           docker tag hello-cloudnexus-frontend:latest \
@@ -59,6 +74,19 @@ jobs:
       - name: Build Backend Image
         run: |
           docker build -t hello-cloudnexus-backend ./backend
+
+      #-----------------Trivy_____________________
+      
+      - name: Scan Backend Image with Trivy
+        uses: aquasecurity/trivy-action@0.20.0
+        with:
+          image-ref: hello-cloudnexus-backend:latest
+          format: table
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
 
       - name: Tag Backend Image
         run: |
