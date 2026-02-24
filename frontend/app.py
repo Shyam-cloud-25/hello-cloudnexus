@@ -72,7 +72,7 @@ HTML_TEMPLATE = """
         <h2>Welcome to <strong>CloudNexus</strong></h2>
 
         <p>
-            Your application is successfully deployed and running in the cloud.
+            The application is successfully deployed and running in the cloud.
             This setup is designed to be scalable, secure, and production-ready.
         </p>
 
