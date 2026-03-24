@@ -8,16 +8,16 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest    #Temporary Ubuntu Machine in which the pipeline will run
     permissions:
-      id-token: write
-      contents: read
+      id-token: write         #for  OIDC authentication with AWS
+      contents: read          #To read Repositorb Content not write.
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4             # It means to use someone else pre-build action.
         with:
-          fetch-depth: 0
+          fetch-depth: 0         #to fetch full hostory from git.
 
         #SONAR-CUBE
 
@@ -27,7 +27,7 @@ jobs:
           projectBaseDir: .
           args: >
            -Dsonar.qualitygate.wait=true
-        env:
+        env:    # to set environment variables
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
          
         #AWS
