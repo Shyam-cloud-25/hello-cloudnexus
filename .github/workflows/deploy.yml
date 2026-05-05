@@ -3,9 +3,17 @@ name: Deploy CloudNexus Frontend & Backend
 on:
   push:
     branches:
-      - main
       - release
   workflow_dispatch:
+    inputs:
+      environment:
+        description: "Select environment"
+        required: true
+        type: choice
+        options:
+          - dev
+          - uat
+          - prod
 
 jobs:
   deploy:
