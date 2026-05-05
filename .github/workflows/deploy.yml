@@ -3,9 +3,7 @@ name: Deploy CloudNexus Frontend & Backend
 on:
   push:
     branches:
-      - main
       - Release
-      - feature
   workflow_dispatch:
     inputs:
       environment:
