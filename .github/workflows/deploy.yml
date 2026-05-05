@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - release
+      - Release
       - feature
   workflow_dispatch:
     inputs:
